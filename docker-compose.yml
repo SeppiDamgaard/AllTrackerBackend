@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  alltracker:
+    image: ${DOCKER_REGISTRY-}alltracker
+    build:
+      context: .
+      dockerfile: AllTracker/Dockerfile
+  sqldb:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+    - SA_PASSWORD=P@$$W0rd2021!.
+    - ACCEPT_EULA=Y
+    ports:
+    - "1440:1433"
+
